@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/hryushm/puppeteer-scraping#readme",
   "dependencies": {
+    "node-fetch": "^2.3.0",
     "puppeteer": "^1.14.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
   }
 }
