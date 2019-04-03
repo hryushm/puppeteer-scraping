@@ -1,0 +1,21 @@
+{
+  "name": "puppeteer-scraping",
+  "version": "1.0.0",
+  "description": "Sample app for scraping with puppetter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:docker": "./build_image.sh",
+    "start:docker": "./run_with_docker.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hryushm/puppeteer-scraping.git"
+  },
+  "author": "hryushm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hryushm/puppeteer-scraping/issues"
+  },
+  "homepage": "https://github.com/hryushm/puppeteer-scraping#readme"
+}
