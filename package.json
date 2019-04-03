@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:docker": "./build_image.sh",
-    "start:docker": "./run_with_docker.sh"
+    "start:docker": "./run_with_docker.sh",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/hryushm/puppeteer-scraping/issues"
   },
-  "homepage": "https://github.com/hryushm/puppeteer-scraping#readme"
+  "homepage": "https://github.com/hryushm/puppeteer-scraping#readme",
+  "dependencies": {
+    "puppeteer": "^1.14.0"
+  }
 }
