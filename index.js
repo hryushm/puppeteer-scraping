@@ -1,6 +1,8 @@
 const notifySlack = require('./lib/notifySlack');
 const getAvailableDate = require('./lib/getAvailableDate');
 
+const reserveUrl = 'https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_menu';
+
 (async () => {
   const date = new Date();
   const url = process.env.SLACK_URL;
@@ -10,7 +12,7 @@ const getAvailableDate = require('./lib/getAvailableDate');
   }
   const availableDate = await getAvailableDate();
   if (availableDate.length > 0) {
-    const text = `利用可能な枠があります！\n${availableDate.join('\n')}`;
+    const text = `利用可能な枠があります！\n${availableDate.join('\n')}\n予約はこちらから\n${reserveUrl}`;
     try {
       await notifySlack(url, text);
       console.log(date, text);
