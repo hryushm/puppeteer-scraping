@@ -10,16 +10,18 @@ const reserveUrl = 'https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_
     console.error('環境変数SLACK_URLがありません');
     process.exit(1);
   }
-  const availableDate = await getAvailableDate();
-  if (availableDate.length > 0) {
-    const text = `利用可能な枠があります！\n${availableDate.join('\n')}\n予約はこちらから\n${reserveUrl}`;
-    try {
+  try {
+    const availableDate = await getAvailableDate();
+    if (availableDate.length > 0) {
+      const text = `利用可能な枠があります！\n${availableDate.join('\n')}\n予約はこちらから\n${reserveUrl}`;
       await notifySlack(url, text);
       console.log(date, text);
-    } catch (error) {
-      console.err(error);
+    } else {
+      console.log(date, 'no available court');
     }
-  } else {
-    console.log(date, 'no available court');
+  } catch (error) {
+    console.log('処理に失敗しました。。');
+    console.log(error);
+    process.exit(1);
   }
 })();
