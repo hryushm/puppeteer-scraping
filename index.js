@@ -1,6 +1,7 @@
 const notifySlack = require('./lib/notifySlack');
 const getAvailableDate = require('./lib/getAvailableDate');
 const StateSaver = require('./lib/StateSaver');
+const logger = require('./lib/logger');
 
 const reserveUrl = 'https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_menu';
 
@@ -10,7 +11,7 @@ const reserveUrl = 'https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_
   let text = '';
   let shouldNotify = true;
   if (!url) {
-    console.error('環境変数SLACK_URLがありません');
+    logger('環境変数SLACK_URLがありません');
     process.exit(1);
   }
   try {
@@ -28,16 +29,16 @@ const reserveUrl = 'https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_
       }
     } else {
       shouldNotify = false;
-      console.log(date, 'no available court');
+      logger(date, 'no available court');
     }
   } catch (error) {
-    console.log(error);
+    logger(error);
     text = '処理に失敗しました。。';
   } finally {
     if (shouldNotify) {
-      console.log('=== notify slack message ===');
-      console.log(date);
-      console.log(text);
+      logger('=== notify slack message ===');
+      logger(date);
+      logger(text);
       await notifySlack(url, text);
     }
   }
